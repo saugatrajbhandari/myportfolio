@@ -1,0 +1,88 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+    {% block title %} portfolio {% endblock %}
+
+{% block content %}
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-content-intro">
+            <h1 class="name">Saugat Rajbhandari</h1>
+            <h3 class="description">Backend Developer</h3>
+
+        </div>
+        </div>
+
+    </section>
+
+    <section class="container">
+        <h3>My Projects</h3>
+        <div class="project-wrapper">
+            {% if projects %}
+            {% for project in projects %}
+            <div class="project-column">
+                <a href="{% url 'project' project.id  %}">
+                <img class="project-thumbnail" src="{{project.thumbnail.url}}" alt="{{project.title}}">
+                </a>
+                <div class="project-body">
+                    <h4>{{project.title}}</h4>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+
+                <h3>There are no projects in the database...</h3>
+            {% endif %}
+
+            
+            </div>
+        </div>
+
+    <div class="about-wrapper">
+        <h3>More About Me</h3>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam, ipsa similique voluptatem enim harum aliquid quas autem cumque nobis at beatae exercitationem earum perferendis! Reprehenderit adipisci vero maiores, repellat ratione accusamus animi odio quibusdam maxime expedita alias, facilis sit veniam?</p>
+
+    </div>
+    </section>
+
+    <section class="skills-section">
+
+    <div class="skills-container">
+        <h3>More About Me</h3>
+        {% for skill in skills %}
+        <div class="skills-wrapper">
+            <h5>{{skill.title}}</h5>
+            <p>{{skill.body}}</p>
+        </div>
+        {% endfor %}
+        <h3>Other Skills</h3>
+        <div 
+        class="other-skill-wrapper">
+        {% for skill in other_skills %}
+            <div class="skill-tag">
+                <span>{{skill.title}}</span>
+            </div>
+        {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+<section class="section-2 mt-3">
+    <div class="container">
+        <form action="" method="POST" class="contact-form">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="mb-3">
+                    <label for="" class="form-label">{{field.label}}</label>
+                    {{field}}
+                </div>
+            {% endfor %}
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+</section>
+    
+
+     {% endblock %}
+
