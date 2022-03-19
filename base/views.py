@@ -1,9 +1,10 @@
+from email import message
 from django.shortcuts import redirect, render
 from django.urls import reverse 
 from django.contrib import messages
 
 from .models import Project, Skill, Message
-from .forms import ProjectForm, MessageForm
+from .forms import ProjectForm, MessageForm, SkillForm
 
 
 def homePage(request):
@@ -60,3 +61,14 @@ def messagePage(request, pk):
     message.save()
     context = {'message': message}
     return render(request, 'base/message.html', context)
+
+
+def addSkill(request):
+    form = SkillForm()
+    if request.method == "POST":
+        form = SkillForm(request.POST)
+        form.save()
+        messages.add_message(request, messages.SUCCESS, 'new skill added.')
+        return redirect(reverse('home'))
+    context = {'form': form}
+    return render(request, 'base/skill_form.html', context)

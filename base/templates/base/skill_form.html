@@ -1,0 +1,23 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}{% endblock title %}
+
+{% block content %}
+
+    <div class="container">
+        <h3>Add Skill</h3>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="mb-3">
+                    <label for="" class='from-label'>{{field.label}}</label>
+                    {{field}}
+                </div>
+            {% endfor %}
+            <input type="submit" value="Submit" class="btn btn-primary">
+        </form>
+    </div>
+
+{% endblock content %}

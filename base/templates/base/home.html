@@ -51,7 +51,7 @@
         <h3>More About Me</h3>
         {% for skill in skills %}
         <div class="skills-wrapper">
-            <h5>{{skill.title}}</h5>
+            <h5>{{skill.title|capfirst}}</h5>
             <p>{{skill.body}}</p>
         </div>
         {% endfor %}

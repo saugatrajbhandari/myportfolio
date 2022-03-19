@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Project, Message
+from .models import Project, Message, Skill
 
 
 class ProjectForm(forms.ModelForm):
@@ -24,4 +24,15 @@ class MessageForm(forms.ModelForm):
         self.fields['name'].widget.attrs.update({'class': 'form-control'})
         self.fields['email'].widget.attrs.update({'class': 'form-control'})
         self.fields['subject'].widget.attrs.update({'class': 'form-control'})
+        self.fields['body'].widget.attrs.update({'class': 'form-control'})
+
+
+class SkillForm(forms.ModelForm):
+    class Meta:
+        model = Skill
+        fields = ['title', 'body']
+
+    def __init__(self, *args, **kwargs):
+        super(SkillForm, self).__init__(*args, **kwargs)
+        self.fields['title'].widget.attrs.update({'class': 'form-control'})
         self.fields['body'].widget.attrs.update({'class': 'form-control'})
