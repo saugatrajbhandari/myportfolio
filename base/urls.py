@@ -12,4 +12,8 @@ urlpatterns = [
     path('message/<str:pk>', views.messagePage, name='message'),
     
     path('add-skill/', views.addSkill, name='add-skill'),
+
+    path('add-endorsement/', views.addEndorsement, name='add-endorsement'),
+
+    path('chart/', views.chartPage, name='chart'), 
 ]

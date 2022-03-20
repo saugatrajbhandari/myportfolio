@@ -51,8 +51,13 @@
         <h3>More About Me</h3>
         {% for skill in skills %}
         <div class="skills-wrapper">
+            {% if skill.logo %}
+                <img src="{{skill.logo.url}}" class='skill-logo' alt="">
+            {% endif %}
+            <div>
             <h5>{{skill.title|capfirst}}</h5>
             <p>{{skill.body}}</p>
+            </div>
         </div>
         {% endfor %}
         <h3>Other Skills</h3>
@@ -65,6 +70,23 @@
         {% endfor %}
             
         </div>
+    </div>
+</section>
+
+<section class="endorsement-section">
+
+    <div class="skills-container">
+        <h3>Endorsements</h3>
+        <a href="{% url 'add-endorsement' %}" class="btn btn-primary my-3">Add Endorsement</a>
+        {% for i in endorsements %}
+        <div class="card" style="margin-bottom:2em;">
+            <div class="card-body">
+                <h5>{{i.name|capfirst}}</h5>
+                <p>{{i.body}}</p>
+            </div>
+            
+        </div>
+        {% endfor %}
     </div>
 </section>
 

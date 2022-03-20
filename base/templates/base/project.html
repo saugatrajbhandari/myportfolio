@@ -4,14 +4,40 @@
 {% block title %}{% endblock title %}
 
 {% block content %}
-
-<div class="container">
+<div class="container"> 
+    <div class="project-container"> 
     <img class="project-image" src="{{project.thumbnail.url}}" alt="{{project.title}}">
     <h1>{{project.title}}</h1>
     <a href="{% url 'edit-project' project.id %}" class="btn btn-warning">Edit</a>
 
     <hr>
     <p>{{project.body|safe}}</p>
+    <div class="comments-container">
+        <h3>Comments ({{count}})</h3>
+        <hr>
+        <form action="" method="post">
+            {% csrf_token %}
+            {% for field in form %}
+            <div class="mb-3">
+                <label for="" class="form-label">{{field.label}}</label>
+                {{field}}
+            </div>
+            {% endfor %}
+            <input type="submit" value="Submit" class="btn btn-primary">
+            
+        </form>
+        {% for comment in comments %}
+            <div class="card my-3">
+                <div class="card-body">
+                    <h5>{{comment.name}}</h5>
+                    <small class="my-3">{{comment.created}}</small>
+                    <hr>
+                    <p>{{comment.body}}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    </div>
 </div>
 
 

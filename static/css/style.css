@@ -13,6 +13,7 @@ body {
   height: 50px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .nav-link {
@@ -75,11 +76,27 @@ body {
   padding-top: 2em;
   padding-bottom: 2em;
 }
+.skill-logo{
+    height: 60px;
+}
+
+.endorsement-section {
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
 
 .other-skill-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 2em;
+
+}
+.skills-wrapper{
+    margin-top: 2em;
+    margin-bottom: 2em;
+    display: flex;
+    gap: 2em;
+    align-items: center;
 }
 
 .skills-container {
@@ -106,10 +123,22 @@ body {
   max-width: 800px;
 }
 
-.contact-form{
-    display: block;
+.contact-form {
+  display: block;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.section-2 {
+  background-color: #fff;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+
+.project-container{
     max-width: 600px;
     margin: 0 auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 
 @media (max-width: 900px) {
@@ -128,4 +157,13 @@ body {
     flex-direction: column;
     align-items: center;
   }
+}
+
+@media (max-width:400px){
+    .skills-container{
+        width:100%;
+    }
+    .skills-wrapper{
+        flex-flow:column;
+    }
 }
